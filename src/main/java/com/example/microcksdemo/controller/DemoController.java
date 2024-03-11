@@ -1,16 +1,24 @@
 package com.example.microcksdemo.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.microcksdemo.model.User;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @RestController
 @RequestMapping("/demo")
 public class DemoController {
 
-    @GetMapping("/hello")
-    public String getHello(){
-        return "Hello World";
+
+    @PostMapping("/createUser")
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        User newUser = new User();
+        newUser.setAge(25);
+        newUser.setId(new Random().nextLong());
+        newUser.setName(user.getName());
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
 }

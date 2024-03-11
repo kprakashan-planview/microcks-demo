@@ -1,20 +1,51 @@
 openapi: 3.0.1
 info:
-  title: OpenAPI definition
-  version: v0
+  title: Demo Microcks API Def
+  version: 1.0.0
 servers:
 - url: http://localhost:50607
   description: Generated server url
 paths:
-  /demo/hello:
-    get:
-      tags:
-      - demo-controller
-      operationId: getHello
+  /demo/createUser:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+            examples:
+              user-created:
+                value:
+                  name: Kashyap
       responses:
-        "200":
-          description: OK
+        "201":
           content:
-            '*/*':
+            application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/User'
+              examples:
+                user-created:
+                  value:
+                    id: 12345
+                    name: Kashyap
+                    age: 25
+          description: User created success
+components:
+  schemas:
+    User:
+      description: A sample user
+      required:
+        - id
+        - name
+        - age
+      type: object
+      properties:
+        id:
+          description: A random id long value
+          type: number
+        name:
+          description: User name as input
+          type: string
+        age:
+          description: User age
+          type: integer
