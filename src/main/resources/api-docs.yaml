@@ -18,4 +18,3 @@ paths:
             '*/*':
               schema:
                 type: string
-components: {}
