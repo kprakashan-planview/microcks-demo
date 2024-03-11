@@ -30,7 +30,7 @@ paths:
                     name: Jane Doe
                     age: 25
           description: User created success
-  /demo/getUser:
+  /demo/getUser/{userId}:
     get:
       summary: Get a user
       parameters:
