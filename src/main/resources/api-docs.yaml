@@ -16,7 +16,7 @@ paths:
             examples:
               user-created:
                 value:
-                  name: Kashyap
+                  name: Jane Doe
       responses:
         "201":
           content:
@@ -27,9 +27,33 @@ paths:
                 user-created:
                   value:
                     id: 12345
-                    name: Kashyap
+                    name: Jane Doe
                     age: 25
           description: User created success
+  /demo/getUser:
+    get:
+      summary: Get a user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The ID of user to return
+          schema:
+            type: number
+            minimum: 0
+      responses:
+        '200':
+          description: A user object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+              examples:
+                user-found:
+                  value:
+                    id: 12345
+                    name: Jane Doe
+                    age: 47
 components:
   schemas:
     User:
