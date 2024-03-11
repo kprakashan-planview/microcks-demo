@@ -21,4 +21,13 @@ public class DemoController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
+    @GetMapping("/getUser/{userId}")
+    public ResponseEntity<?> getUser(@PathVariable Long userId) {
+        User newUser = new User();
+        newUser.setAge(25);
+        newUser.setId(userId);
+        newUser.setName("Jane Doe");
+        return new ResponseEntity<>(newUser, HttpStatus.OK);
+    }
+
 }

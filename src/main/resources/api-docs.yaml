@@ -39,10 +39,10 @@ paths:
           required: true
           description: The ID of user to return
           schema:
-            type: number
-            minimum: 0
+            type: integer
+            format: int64
       responses:
-        '200':
+        "200":
           description: A user object
           content:
             application/json:
@@ -51,7 +51,7 @@ paths:
               examples:
                 user-found:
                   value:
-                    id: 12345
+                    id: 1234567890123456789
                     name: Jane Doe
                     age: 47
 components:
